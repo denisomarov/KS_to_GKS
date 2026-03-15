@@ -25,7 +25,7 @@ def process_with_openpyxl(uploaded_file, sheet_name):
 
     if not df_a.empty:
 
-        df_a = df_a.iloc[1:,1:9]
+        df_a = df_a.iloc[1:,1:10]
         df_a.columns = ['№ кабеля', 'Марка кабеля', 'Жильность x сечение',
                'Кол-во использ. Жил', 'Откуда', 'Куда',
                'Длина проект, м', 'Длина факт, м', 'Примечание']
