@@ -10,9 +10,8 @@ def process_with_openpyxl(uploaded_file, sheet_name):
 
     # Инииализация переменных
 
-    PSName                  = 'Туркибас'
     sign_of_existing_cable  = 'Существующий кабель'
-    opt_c_name              = ['6XV8100 LC-LC', '6XV8100 ST-ST', '6XV8100 ST-LC', '6XV8100 LC-ST']
+    opt_c_name              = ['6XV8100', '6XV8100 LC-LC', '6XV8100 ST-ST', '6XV8100 ST-LC', '6XV8100 LC-ST']
 
     # Инициализация структуры для сохранения результата
     data           = {'Тип кабеля': [], 'Код заказа': [], 'Завод-изготовитель': [], 'Длина, м': [], 'Кол-во, шт': []}
