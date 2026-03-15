@@ -204,6 +204,6 @@ if uploaded_file is not None:
         st.download_button(
             label="📥 Скачать готовый файл",
             data=result,
-            file_name="formatted_data.xlsx",
+            file_name="ГСИКБ.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
