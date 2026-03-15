@@ -1,13 +1,10 @@
 import streamlit as st
 import io
 import pandas as pd
-import numpy as np
 from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
-from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
-from fontTools.cu2qu.cu2qu import NAN
-from pandas.core.config_init import max_cols
+from openpyxl.styles import Font, Border, Side, Alignment
 
 def process_with_openpyxl(uploaded_file, sheet_name):
 
