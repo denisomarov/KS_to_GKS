@@ -42,6 +42,9 @@ def process_with_openpyxl(uploaded_file, sheet_name):
         # Убираем существующий кабель
         df_a = df_a.loc[df_a['Примечание'] != sign_of_existing_cable]
 
+        # Меняем точки в сечении кабеля на запятые
+        df_a['Жильность x сечение'] = df_a['Жильность x сечение'].str.replace('.', ',')
+
         # выделяем кабель для ГСИКБ
 
         for patch_name in opt_c_name:
