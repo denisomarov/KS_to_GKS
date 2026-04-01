@@ -22,6 +22,13 @@ def process_with_openpyxl(uploaded_file, sheet_name):
                                'ОВК-Б-нг(А)-HF-2Г LC-ST', 'ОВК-Б-нг(А)-HF-2Г ST-LC'
                                ]
 
+    opt_c_name_1c = [
+                  'ОВК-Б-нг(А) HF – 1Г – 0,5 кН LC-LC', 'ОВК-Б-нг(А) HF – 1Г – 0,5 кН ST-ST',
+                  'ОВК-Б-нг(А) HF – 1Г – 0,5 кН ST-LC', 'ОВК-Б-нг(А) HF – 1Г – 0,5 кН LC-ST',
+                  'ОВК-Б-нг(А)-HF-1Г LC-LC', 'ОВК-Б-нг(А)-HF-1Г ST-ST',
+                  'ОВК-Б-нг(А)-HF-1Г LC-ST', 'ОВК-Б-нг(А)-HF-1Г ST-LC'
+                  ]
+
     # Инициализация структуры для сохранения результата
     data           = {'Тип кабеля': [], 'Код заказа': [], 'Завод-изготовитель': [], 'Длина, м': [], 'Кол-во, шт': []}
     df_cable       = pd.DataFrame(data)
@@ -72,6 +79,9 @@ def process_with_openpyxl(uploaded_file, sheet_name):
 
             if len(df_optic_sorted) > 0:
                 df_cable = pd.concat([df_cable, df_optic_sorted], ignore_index=True)
+
+        # увеличиваем на 2 число кабелей/шнуров с одной оптической жилой
+        df_cable.loc[df_cable['Тип кабеля'].str.contains('1Г'), 'Кол-во, шт'] *= 2
 
         # фиксируем формат финальной таблицы ГСИКБ
         df_cable['Тип кабеля'] = df_cable['Тип кабеля'].astype(str)
