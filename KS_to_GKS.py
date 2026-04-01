@@ -13,7 +13,14 @@ def process_with_openpyxl(uploaded_file, sheet_name):
     sign_of_existing_cable  = 'Существующий кабель'
     opt_c_name              = ['6XV8100', '6XV8100 LC-LC', '6XV8100 ST-ST', '6XV8100 ST-LC', '6XV8100 LC-ST',
                                'ОВК-Б-нг(А) HF – 1Г – 0,5 кН LC-LC', 'ОВК-Б-нг(А) HF – 1Г – 0,5 кН ST-ST',
-                               'ОВК-Б-нг(А) HF – 2Г – 2,7 кН LC-LC', 'ОВК-Б-нг(А) HF – 2Г – 2,7 кН ST-ST']
+                               'ОВК-Б-нг(А) HF – 1Г – 0,5 кН ST-LC', 'ОВК-Б-нг(А) HF – 1Г – 0,5 кН LC-ST',
+                               'ОВК-Б-нг(А) HF – 2Г – 2,7 кН LC-LC', 'ОВК-Б-нг(А) HF – 2Г – 2,7 кН ST-ST',
+                               'ОВК-Б-нг(А) HF – 2Г – 2,7 кН ST-LC', 'ОВК-Б-нг(А) HF – 2Г – 2,7 кН LC-ST',
+                               'ОВК-Б-нг(А)-HF-1Г LC-LC', 'ОВК-Б-нг(А)-HF-1Г ST-ST',
+                               'ОВК-Б-нг(А)-HF-1Г LC-ST', 'ОВК-Б-нг(А)-HF-1Г ST-LC',
+                               'ОВК-Б-нг(А)-HF-2Г LC-LC', 'ОВК-Б-нг(А)-HF-2Г ST-ST',
+                               'ОВК-Б-нг(А)-HF-2Г LC-ST', 'ОВК-Б-нг(А)-HF-2Г ST-LC'
+                               ]
 
     # Инициализация структуры для сохранения результата
     data           = {'Тип кабеля': [], 'Код заказа': [], 'Завод-изготовитель': [], 'Длина, м': [], 'Кол-во, шт': []}
@@ -60,10 +67,10 @@ def process_with_openpyxl(uploaded_file, sheet_name):
             df_optic_sorted.sort_values(['Длина, м'], inplace=True)
 
             df_optic_sorted['Код заказа'] = ''
-            df_optic_sorted['Завод-изготовитель'] = 'SIEMENS'
+            df_optic_sorted['Завод-изготовитель'] = ''
             df_optic_sorted = df_optic_sorted[['Тип кабеля', 'Код заказа', 'Завод-изготовитель', 'Длина, м', 'Кол-во, шт']]
 
-            if len(df_optic_sorted) > 1:
+            if len(df_optic_sorted) > 0:
                 df_cable = pd.concat([df_cable, df_optic_sorted], ignore_index=True)
 
         # фиксируем формат финальной таблицы ГСИКБ
@@ -107,7 +114,7 @@ def process_with_openpyxl(uploaded_file, sheet_name):
 
         # зададим ширину столбцов 20 единиц
         ws.column_dimensions['A'].width  = 5
-        ws.column_dimensions['B'].width  = 20
+        ws.column_dimensions['B'].width  = 40
         ws.column_dimensions['C'].width  = 20
         ws.column_dimensions['D'].width  = 20
         ws.column_dimensions['E'].width  = 15
