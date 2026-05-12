@@ -48,6 +48,9 @@ def process_with_openpyxl(uploaded_file, sheet_name):
         # Убираем непечатные символы
         df_a = df_a.apply(lambda x: x.str.replace(r'[\r\n\t]', '', regex=True) if x.dtype == "str" else x)
 
+        df_a['№ кабеля'] = df_a['№ кабеля'].astype(str)
+        df_a['Марка кабеля'] = df_a['Марка кабеля'].astype(str)
+        df_a['Жильность x сечение'] = df_a['Жильность x сечение'].astype(str)
         df_a['Откуда'] = df_a['Откуда'].astype(str)
         df_a['Куда'] = df_a['Куда'].astype(str)
         df_a['Длина проект, м'] = df_a['Длина проект, м'].astype(str)
